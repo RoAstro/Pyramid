@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1,p,h2{font-family: Arial, Helvetica, sans-serif;}
+    </style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search engine</title>
+</head>
+<body>
+    <center><h1 style="font-size: 60px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Pyramid Search Engine V2</h1></center>
+    <div style="height: 40px;width:650px;position: absolute; top: 30%;left:28%">
+    <input type="text" name="" id="input" style="height:100%;width: 100%;font-size: 35px;border-style: solid;border-radius: 10px;">
+     <i id="myBtn" class="material-icons" style="font-size: 40px;position: absolute;top:0%;right: -8.5%; border-style: solid;border-radius: 10px;" onclick="search()">search</i>
+  
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <center id="res" hidden>
+        <div style="border-style: solid;">
+    
+        <h1 id="t1"></h1>
+        </div><br>
+
+    </center>
+    <script>
+
+
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("myBtn").click();
+  }
+});
+
+
+        keyword=["youtube",'yt',
+        'imagini','flickr', 
+        'facebook','fb', 
+        'twitter','tweet',
+        'microsoft','ms',
+        'amazon','amzn',
+        'apple','iphone',
+        'instagram','ig',
+        'whatsapp','wapp',
+        'wikipedia',
+        'ipsilon',
+        'dexonline','dex',
+        'github'
+    ];
+        link_list=['https://youtube.com', 'https://youtube.com',
+        'https://www.flickr.com','https://www.flickr.com', 
+        'https://facebook.com/', 'https://facebook.com/',
+        'https://twitter.com',  'https://twitter.com',
+         'https://microsoft.com',  'https://microsoft.com',
+          'https://amazon.com', 'https://amazon.com',
+          'https://apple.com','https://www.apple.com/iphone', 
+          'https://instagram.com', 'https://instagram.com',
+           'https://web.whatsapp.com','https://web.whatsapp.com',
+            'https://wikipedia.com', 
+            'https://roastro.github.io/Ipsilon/',
+        'https://dexonline.ro','https://dexonline.ro',
+    'https://github.com'
+];
+      
+        function search(){
+           document.getElementById('res').style.display='inline';
+
+        input=document.getElementById('input').value.toLowerCase();
+        document.getElementById('input').value="";
+            i=0;
+            input_key=123;
+            while(i<keyword.length){
+                if(input==keyword[i]){
+                    check1=i;
+    break;
+                        }
+                i++;
+            }
+
+                
+                if(input.split(" ")[0]=="dex" || input.split(" ")[0]=="dexonline"){
+                    if(input.split(" ").length!=1){
+                    document.getElementById('t1').innerHTML='<a href="https://dexonline.ro/definitie/'+input.split(" ")[1]+'">Dexonline '+input.split(' ')[1]+'</a>';
+                     }else{
+                    document.getElementById('t1').innerHTML='<a href="'+link_list[i]+'">'+link_list[i].split('//')[1]+'</a>';
+            }
+                
+                }else if(input.split(" ")[0]=="yt" || input.split(" ")[0]=="youtube"){
+                    if(input.split(" ").length!=1){  
+                        document.getElementById('t1').innerHTML='<a href="https://www.youtube.com/results?search_query='+input.split(" ")[1]+'">YouTube '+input.split(' ')[1]+'</a>';
+                }else{
+                    document.getElementById('t1').innerHTML='<a href="'+link_list[i]+'">'+link_list[i].split('//')[1]+'</a>';
+            }
+                }else{
+                    document.getElementById('t1').innerHTML='<a href="'+link_list[i]+'">'+link_list[i].split('//')[1]+'</a>';
+            }
+        }
+            
+
+
+        
+
+    </script>
+</body>
+</html>
